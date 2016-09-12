@@ -8,29 +8,39 @@ class PriorityQueue {
 			this.maxSize = 30;
 		}
 		this.heap = new MaxHeap();
+		this.countSize = 0;
 
 	}
 
 	push(data, priority) {
-		var countSize = 1;
-		if(this.maxSize > countSize){
-			this.heap.push(data,priority);
-			countSize ++;
-		}else{
+		
+		this.heap.push(data,priority);
+		this.countSize ++;
+		if(this.maxSize < this.countSize){
 			throw new Error('err');
-
 		}
 	}
 
 	shift() {
-
+		if(this.isEmpty()){
+			throw new Error('err');
+		}
+		var removedNode = this.heap.pop();
+		this.countSize --;
+		return removedNode;
 	}
 
 	size() {
+		return this.countSize;
 
 	}
 
 	isEmpty() {
+		if (this.countSize == 0) {
+			return true;
+		}else{
+			return false;
+		}
 		
 	}
 }

@@ -28,6 +28,7 @@ class MaxHeap {
 	}
 
 	detachRoot() {
+		this.root = null;
 		
 	}
 
@@ -36,11 +37,16 @@ class MaxHeap {
 	}
 
 	size() {
+		return this.parentNodesCounter;
 		
 	}
 
 	isEmpty() {
-		
+		if (this.parentNodesCounter == 0) {
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	clear() {
